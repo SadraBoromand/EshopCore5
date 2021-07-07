@@ -1,0 +1,42 @@
+﻿@page
+@model MyEShop.Pages.Admin.DeleteModel
+@{
+    ViewData["Title"] = "حذف کالا";
+}
+
+<h1>حذف محصول @Model.Product.Name</h1>
+<hr />
+
+<form method="post">
+
+    <dl class="dl-horizontal">
+        <dt>
+            <label asp-for="Product.Name"></label>
+        </dt>
+        <dd>
+            <input asp-for="Product.Name" class="form-control" readonly/>
+            <span asp-validation-for="Product.Name"></span>
+        </dd>
+        <dt>
+            <label asp-for="Product.Description"></label>
+        </dt>
+        <dd>
+            <textarea asp-for="Product.Description" rows="4" readonly class="form-control"></textarea>
+            <span asp-validation-for="Product.Description" ></span>
+        </dd>
+        <dt>
+            <label>تصویر</label>
+        </dt>
+        <dd>
+            <img src="/images/@(Model.Product.ProductID).jpg" style="max-width: 200px" alt="@Model.Product.ProductID" />
+        </dd>
+        <dt>
+        </dt>
+        <dd>
+            <input type="hidden" asp-for="Product.ProductID" />
+            <input type="submit" value="حذف" class="btn btn-block rounded-pill btn-danger" />
+
+        </dd>
+    </dl>
+
+</form>

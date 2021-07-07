@@ -1,0 +1,19 @@
+﻿
+@model Product
+
+<div class="col-md-4 mb-3">
+    <div class="card">
+        <img src="/Images/@(Model.ItemId).jpg" width="160" height="160" class="card-img-top img-thumbnail" alt="@Model.Name">
+        <div class="card-body">
+            <h6 class="card-title">@Model.Name</h6>
+            <p class="card-text">
+            </p>
+            @{
+                string detailName = Model.Name.Replace(" ", "-");
+            }
+            <a asp-controller="Home" asp-action="Detail" asp-route-id="@Model.ItemId" asp-route-name="@detailName" class="btn btn-sm btn-outline-primary">
+                جزئیات محصول
+            </a>
+        </div>
+    </div>
+</div>

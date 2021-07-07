@@ -1,0 +1,39 @@
+﻿@using MyEShop.Convertor
+@model MyEShop.ViewModels.DetailsViewModel
+@{
+    ViewData["Title"] = " کالا" + Model.Product.Name;
+}
+
+<div class="container">
+    <h1 class="display-5">@Model.Product.Name</h1>
+    <hr />
+    <img class="img-thumbnail my-4" src="/images/@(Model.Product.ProductID).jpg" alt="@Model.Product.Name" />
+    <p class="text-justify">
+        @Model.Product.Description
+    </p>
+    <p>
+        قیمت :  @Model.Product.Item.Price.ToRial()
+    </p>
+    <dl>
+        @foreach (var item in Model.Categories)
+        {
+            <dt>
+                <a href="#">
+                    @item.Name
+                </a>
+            </dt>
+            <dd>@item.Description</dd>
+        }
+    </dl>
+    <div>
+        <a class="btn btn-primary"
+           asp-controller="Home"
+           asp-action="AddToCart"
+           asp-route-itemId="@Model.Product.ItemId">
+            افزودن به سبد خرید
+        </a>
+    </div>
+    <br />
+    <br />
+    <br />
+</div>
